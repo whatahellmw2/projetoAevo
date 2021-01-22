@@ -30,6 +30,7 @@ formElement.addEventListener("submit", function(event){
        document.querySelector("#pressao").innerHTML=response.current.pressure;
        document.querySelector("#uv").innerHTML=response.current.uv_index;
        document.querySelector("#time").innerHTML=response.current.observation_time;
+       document.querySelector("#dadosClima img").src=response.current.weather_icons;
        console.log(response);
     })
     //window.alert(requiscao.cidade+requiscao.senha);
@@ -46,8 +47,8 @@ window.onload = function (){
     .then(function(response){       
   
        document.querySelector("#card1D").innerHTML=response.current.weather_descriptions[0];
-       document.querySelector("#card1T").innerHTML=response.current.temperature;
-       document.querySelector("#card1 img").src=response.current.weather_icons;
+       document.querySelector("#card1T").innerHTML=response.current.temperature+"ºC";
+       document.querySelector("#card1 .climaImg").src=response.current.weather_icons;
        
     })
     
@@ -59,8 +60,8 @@ window.onload = function (){
     .then(function(response){       
   
        document.querySelector("#card2D").innerHTML=response.current.weather_descriptions[0];
-       document.querySelector("#card2T").innerHTML=response.current.temperature;
-       document.querySelector("#card2 img").src=response.current.weather_icons;
+       document.querySelector("#card2T").innerHTML=response.current.temperature+"ºC";
+       document.querySelector("#card2 .climaImg").src=response.current.weather_icons;
        
     })
     
@@ -72,8 +73,8 @@ window.onload = function (){
     .then(function(response){       
   
        document.querySelector("#card3D").innerHTML=response.current.weather_descriptions[0];
-       document.querySelector("#card3T").innerHTML=response.current.temperature;
-       document.querySelector("#card3 img").src=response.current.weather_icons;
+       document.querySelector("#card3T").innerHTML=response.current.temperature+"ºC";
+       document.querySelector("#card3 .climaImg").src=response.current.weather_icons;
        
     })
     
@@ -85,8 +86,8 @@ window.onload = function (){
     .then(function(response){       
   
        document.querySelector("#card4D").innerHTML=response.current.weather_descriptions[0];
-       document.querySelector("#card4T").innerHTML=response.current.temperature;
-       document.querySelector("#card4 img").src=response.current.weather_icons;
+       document.querySelector("#card4T").innerHTML=response.current.temperature+"ºC";
+       document.querySelector("#card4 .climaImg").src=response.current.weather_icons;
        
     })
 }
