@@ -4,43 +4,29 @@
     <meta charset='utf-8'>    
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src='main.js'></script>
+    <link  rel="stylesheet" href="myCSS.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+    
 </head>
 <body>
-<header class="flexContainer">
- 
-        <div id="headerContainer2">
-            <img src="building1.png">
-            <h1>Florida Real Estate</h1>
+    <header class="container-fluid" id="header">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1">
+                <img src="resources/imagens/logo.png" style="width: 70px;height: 70px;">
+            </div>          
+            <form class="col-md-5"id="formClima" >                      
+                <div class="form-control-lg">                
+                    <div class="input-group">                    
+                        <input class="form-control " type="text" name="cidade" placeholder="procure uma cidade" id="nomeCidade" style="min-width: 150px;">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary"type="submit">Buscar</button>
+                        </span>
+                    </div>                
+                </div>            
+            </form>
+            <div class="col-md-3"></div>
         </div>
-        <div id="headerContainer1">
-        <nav class="flexContainer">
-        <ul>
-            <a href="#">
-                <li>teste</li>
-            </a>
-            <a href="#">
-                <li>teste</li>
-            </a>
-            <a href="#">
-                <li>teste</li>
-            </a>
-            <a href="#">
-                <li>teste</li>
-            </a>
-            <a href="#">
-                <li>teste</li>
-            </a>
-            <a href="#">
-                <li>teste</li>    
-            </a> 
-            
-        </ul>
         
-</nav>
-
-        </div>
-</header>
-<hr>
+    </header>

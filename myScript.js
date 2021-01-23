@@ -1,17 +1,16 @@
 let inputElement = document.querySelector("#nomeCidade");
 let formElement = document.querySelector("#formClima");
 let contentElement = document.querySelector("dadosClima");
-let climaAtual;
-let access_key="40f434135185e4b16d6743c57c8d8eeb";
+
+//let access_key="158844845ff2e24f95713211a5ab66b0";
 //console.log(inputElement);
 //console.log(formElement);
-formElement.addEventListener("submit", function(event){
-    event.preventDefault();
-    
-    let   query= inputElement.value;
+
+
    
     //a subscrição free não permite alterar a lingua
-    climaAtual= fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+query)
+function climaAtual(query){
+    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+query)
     .then(function(response){
         console.log(response);
         return response.json();
@@ -34,11 +33,55 @@ formElement.addEventListener("submit", function(event){
        console.log(response);
     })
     //window.alert(requiscao.cidade+requiscao.senha);
-    
+}
+function localizacao(){
+    fetch("http://api.ipstack.com/check?access_key=cf0807d4e5aedccbd263028e10dcb2cb")
+    .then(function(response){
+        console.log(response);
+        return response.json();
+    })
+    .then(function(response){       
+       console.log(response);
+       climaAtual(response.city);
+    })
+}
+//não disponivel para subscrição gratis =(
+function previsao(query){
+
+}
+
+formElement.addEventListener("submit", function(event){
+    event.preventDefault();
+    let   query= inputElement.value;
+    climaAtual(query);    
     
 });
+
+function mudarTab(id){
+    let classes=document.querySelector("#"+id+" a").classList;
+    console.log(classes);
+    if(classes.length>2){
+       
+    }else{        
+        if(document.querySelector("#"+id).id=="atual"){
+            document.querySelector("#previsao a").classList.remove("active");
+            document.querySelector("#atual a").classList.add("active");
+            let   query= inputElement.value;            
+            climaAtual(query);
+            //window.alert("sou o atual");
+        }else{
+            document.querySelector("#atual a").classList.remove("active");
+            document.querySelector("#previsao a").classList.add("active");
+            let   query= inputElement.value;            
+            //climaAtual(query);
+            //window.alert("sou a previsao");
+        }
+        
+    }
+}
+
 window.onload = function (){
-            
+    //localizacao();     
     fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+"New York")
     .then(function(response){
         console.log(response);
@@ -91,4 +134,3 @@ window.onload = function (){
        
     })
 }
- 

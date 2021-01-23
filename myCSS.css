@@ -1,0 +1,53 @@
+#principal {
+    min-height: 90vh;
+    background-color: white;
+}
+#header{
+    min-height: 20vh;
+    padding-top: 50px;
+    background-color: #57648C;
+}
+#dadosClima{
+    padding-top: 20px;
+}
+nav{
+    padding-top: 5px;
+}
+small{
+    text-align: center;
+}
+#rodape{
+    min-height: 20vh;            
+}
+#rodape .row{
+    position: relative;
+    top:15vh;
+}
+#climasSection{
+    min-height: 20vh;
+    background-color:#E5E5E5 ;
+}
+main{
+    background: linear-gradient(0deg, rgba(194,180,214,1)0%, rgba(87,100,140,1) 100%);
+}
+footer{
+    background: linear-gradient(0deg, rgba(116,108,110,1) 0%, rgba(229,229,229,1) 100%);    
+}   
+#imagemeLocalizacao{
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+section dt img{
+    max-width: 30px;
+    max-height: 30px;
+}
+.cidadeImg{
+    min-height: 100px;
+}
+
+@media (min-width: 765px){
+    .card dl{
+        
+        max-height: 96px;
+    }
+}

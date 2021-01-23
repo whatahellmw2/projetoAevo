@@ -7,62 +7,7 @@
     <link  rel="stylesheet" href="myCSS.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     
-    <style>
-        #principal {
-            min-height: 90vh;
-            background-color: white;
-        }
-        #header{
-            min-height: 20vh;
-            padding-top: 50px;
-            background-color: #57648C;
-        }
-        #dadosClima{
-            padding-top: 20px;
-        }
-        nav{
-            padding-top: 5px;
-        }
-        small{
-            text-align: center;
-        }
-        #rodape{
-            min-height: 20vh;            
-        }
-        #rodape .row{
-            position: relative;
-            top:15vh;
-        }
-        #climasSection{
-            min-height: 20vh;
-            background-color:#E5E5E5 ;
-        }
-        main{
-            background: linear-gradient(0deg, rgba(194,180,214,1)0%, rgba(87,100,140,1) 100%);
-        }
-        footer{
-            background: linear-gradient(0deg, rgba(116,108,110,1) 0%, rgba(229,229,229,1) 100%);    
-        }   
-        #imagemeLocalizacao{
-            align-items: flex-end;
-            justify-content: flex-end;
-        }
-        section dt img{
-            max-width: 30px;
-            max-height: 30px;
-        }
-        .cidadeImg{
-            min-height: 100px;
-        }
-       
-        @media (min-width: 765px){
-            .card dl{
-                
-                max-height: 96px;
-            }
-        }
-        
-    </style>
+    
 </head>
 <body>
     <header class="container-fluid" id="header">
@@ -88,86 +33,79 @@
     <main class="container-fluid">
         
         <div class="row">
+
             <div class="col-md-2" >
             </div>
-            
-            <div class="col-md-8 border rounded-top" id="principal">
-                <div class="row">
-                    <nav>
-                        <ul class="nav nav-tabs justify-content-center nav-fill nav-justified shadow-sm">
-                            <li class="nav-item">
-                                <a class="nav-link active text-reset" href="#">
-                                    Hoje
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link text-reset" href="#">
-                                    Próximos dias
-                                </a>
-                            </li>
-                            <li  class="nav-item">
-                                <a class="nav-link text-reset" href="#">
-                                    Sei la
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-reset" href="#">
-                                    Ok nao sei
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                
-                <div class="row" id="dadosClima">                    
-                    <div id="imagemeLocalizacao"></div>
-                        <img class ="col-sm-3" src="#" class="img-thumbnail" alt="imagem do clima" style="max-height:150px;max-width:150px;float:left">
-                        <div class="col-sm-9" style="padding-top: 7%;">
-                            <h4 style="text-align: center;"><span id="pais">País, </span><span id="cidade">Cidade, </span><span id="regiao">Região</span></h4>
-                        </div>
-                    </div>
-                   
+           
+            <div class="col-md-8 border rounded-top" id="principal"  style="background-color: white;background-image: url(resources/imagens/Snowflake.png); background-position: center;background-repeat: no-repeat;background-size: contain;">
+                <div style="background-color:rgba(255, 255, 255,0.90);height: 100%;">
                     
+                    <div class="row" style="background-color:rgba(223, 209, 232,0.98);">
+                        <nav>
+                            <ul class="nav nav-tabs justify-content-center nav-fill nav-justified shadow-sm">
+                                <li class="nav-item" id="atual" onclick="mudarTab(this.id);">
+                                    <a class="nav-link text-reset active" href="#">
+                                        Hoje
+                                    </a>
+                                </li>
+                                <li class="nav-item" id="previsao" onclick="mudarTab(this.id);">                                    
+                                    <a class="nav-link text-reset disabled" href="#">
+                                        Previsão para os próximos dias
+                                    </a>
+                                </li>                                
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                    <div class="row" id="dadosClima">                    
+                        <div id="imagemeLocalizacao"></div>
+                            <img class ="col-sm-3" src="#" class="img-thumbnail" alt="imagem do clima" style="max-height:150px;max-width:150px;float:left">
+                            <div class="col-sm-9" style="padding-top: 7%;">
+                                <h4 style="text-align: center;"><span id="pais">País, </span><span id="cidade">Cidade, </span><span id="regiao">Região</span></h4>
+                            </div>
+                    </div>
+                        
                     <dl class="row" style="padding-top: 30px;">
                         
-                    <dt class="col-sm-3 mt-3">Tempo</dt>
-                    <dd class="col-sm-9 mt-3" id="descricao">A description list is perfect for defining terms.</dd>
-                       
+                        <dt class="col-sm-3 mt-3">Tempo</dt>
+                        <dd class="col-sm-9 mt-3" id="descricao">A description list is perfect for defining terms.</dd>
+                        
 
-                       <dt class="col-sm-3 mt-3" >Temperatura</dt>
-                       <dd class="col-sm-9 mt-3" id="temperatura">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3" >Temperatura</dt>
+                        <dd class="col-sm-9 mt-3" id="temperatura">A description list is perfect for defining terms.</dd>
 
-                       <dt class="col-sm-3 mt-3">Umidade</dt>
-                       <dd class="col-sm-9 mt-3" id="umidade">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3">Umidade</dt>
+                        <dd class="col-sm-9 mt-3" id="umidade">A description list is perfect for defining terms.</dd>
 
-                       <dt class="col-sm-3 mt-3">Precipitação</dt>
-                       <dd class="col-sm-9 mt-3" id="precip">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3">Precipitação</dt>
+                        <dd class="col-sm-9 mt-3" id="precip">A description list is perfect for defining terms.</dd>
 
-                       <dt class="col-sm-3 mt-3">Visibilidade</dt>
-                       <dd class="col-sm-9 mt-3" id="visibilidade">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3">Visibilidade</dt>
+                        <dd class="col-sm-9 mt-3" id="visibilidade">A description list is perfect for defining terms.</dd>
 
-                       <dt class="col-sm-3 mt-3">Velocidade do Vento</dt>
-                       <dd class="col-sm-9 mt-3" id="velocidade">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3">Velocidade do Vento</dt>
+                        <dd class="col-sm-9 mt-3" id="velocidade">A description list is perfect for defining terms.</dd>
 
-                       <dt class="col-sm-3 mt-3">Direção</dt>
-                       <dd class="col-sm-9 mt-3" id="direcao">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3">Direção</dt>
+                        <dd class="col-sm-9 mt-3" id="direcao">A description list is perfect for defining terms.</dd>
 
-                       <dt class="col-sm-3 mt-3">Pressão</dt>
-                       <dd class="col-sm-9 mt-3" id="pressao">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3">Pressão</dt>
+                        <dd class="col-sm-9 mt-3" id="pressao">A description list is perfect for defining terms.</dd>
 
-                       <dt class="col-sm-3 mt-3">Índice UV</dt>
-                       <dd class="col-sm-9 mt-3" id="uv">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3">Índice UV</dt>
+                        <dd class="col-sm-9 mt-3" id="uv">A description list is perfect for defining terms.</dd>
 
-                       <dt class="col-sm-3 mt-3">Horário da Observação</dt>
-                       <dd class="col-sm-9 mt-3" id="time">A description list is perfect for defining terms.</dd>
+                        <dt class="col-sm-3 mt-3">Horário da Observação</dt>
+                        <dd class="col-sm-9 mt-3" id="time">A description list is perfect for defining terms.</dd>
                     </dl>
+                </div>
+                
                    
-                </div>                
-
-            </div>
+            </div>             
             
             <div class="col-md-2">
             </div>
+
         </div>      
     </main>
     <section  id="climasSection">
@@ -271,7 +209,9 @@
                       </div>
                 </div>
             </div>
-
+            <div class="row" style="padding-left:10px;padding-right:10px;padding-top:10px">
+                <button type="button" class="btn btn-secondary col-sm-2 offset-sm-10">Favoritos</button>
+            </div>
         </div>
     </section>
     <footer>
