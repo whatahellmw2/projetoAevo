@@ -37,35 +37,35 @@
                     <dl class="row" style="padding-top: 30px;">
                         
                         <dt class="col-sm-3 mt-3">Tempo</dt>
-                        <dd class="col-sm-9 mt-3" id="descricao">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="descricao"></dd>
                         
 
                         <dt class="col-sm-3 mt-3" >Temperatura</dt>
-                        <dd class="col-sm-9 mt-3" id="temperatura">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="temperatura"></dd>
 
                         <dt class="col-sm-3 mt-3">Umidade</dt>
-                        <dd class="col-sm-9 mt-3" id="umidade">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="umidade"></dd>
 
                         <dt class="col-sm-3 mt-3">Precipitação</dt>
-                        <dd class="col-sm-9 mt-3" id="precip">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="precip"></dd>
 
                         <dt class="col-sm-3 mt-3">Visibilidade</dt>
-                        <dd class="col-sm-9 mt-3" id="visibilidade">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="visibilidade"></dd>
 
                         <dt class="col-sm-3 mt-3">Velocidade do Vento</dt>
-                        <dd class="col-sm-9 mt-3" id="velocidade">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="velocidade"></dd>
 
                         <dt class="col-sm-3 mt-3">Direção</dt>
-                        <dd class="col-sm-9 mt-3" id="direcao">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="direcao"></dd>
 
                         <dt class="col-sm-3 mt-3">Pressão</dt>
-                        <dd class="col-sm-9 mt-3" id="pressao">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="pressao"></dd>
 
                         <dt class="col-sm-3 mt-3">Índice UV</dt>
-                        <dd class="col-sm-9 mt-3" id="uv">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="uv"></dd>
 
                         <dt class="col-sm-3 mt-3">Horário da Observação</dt>
-                        <dd class="col-sm-9 mt-3" id="time">A description list is perfect for defining terms.</dd>
+                        <dd class="col-sm-9 mt-3" id="time"></dd>
                     </dl>
                 </div>
                 

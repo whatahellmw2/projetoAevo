@@ -3,12 +3,11 @@ let formElement = document.querySelector("#formClima");
 let contentElement = document.querySelector("dadosClima");
 let contador=0;
 let access_key="158844845ff2e24f95713211a5ab66b0";
-//console.log(inputElement);
-//console.log(formElement);
+
 
 
    
-    //a subscrição free não permite alterar a lingua
+//a subscrição free não permite alterar a lingua
 function climaAtual(query){
     fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+query)
     .then(function(response){
@@ -20,19 +19,19 @@ function climaAtual(query){
        document.querySelector("#cidade").innerHTML=response.location.name+", ";
        document.querySelector("#regiao").innerHTML=response.location.region;
        document.querySelector("#descricao").innerHTML=response.current.weather_descriptions[0];
-       document.querySelector("#temperatura").innerHTML=response.current.temperature;
-       document.querySelector("#umidade").innerHTML=response.current.humidity;
-       document.querySelector("#precip").innerHTML=response.current.precip;
-       document.querySelector("#visibilidade").innerHTML=response.current.visibility;
-       document.querySelector("#velocidade").innerHTML=response.current.wind_speed;
+       document.querySelector("#temperatura").innerHTML=response.current.temperature+"ºC";
+       document.querySelector("#umidade").innerHTML=response.current.humidity+"%";
+       document.querySelector("#precip").innerHTML=response.current.precip+"mm";
+       document.querySelector("#visibilidade").innerHTML=response.current.visibility+"km";
+       document.querySelector("#velocidade").innerHTML=response.current.wind_speed+"km";
        document.querySelector("#direcao").innerHTML=response.current.wind_dir;
-       document.querySelector("#pressao").innerHTML=response.current.pressure;
+       document.querySelector("#pressao").innerHTML=response.current.pressure+"mb";
        document.querySelector("#uv").innerHTML=response.current.uv_index;
        document.querySelector("#time").innerHTML=response.current.observation_time;
        document.querySelector("#dadosClima img").src=response.current.weather_icons;
        console.log(response);
     })
-    //window.alert(requiscao.cidade+requiscao.senha);
+    
 }
 function localizacao(){
     fetch("http://api.ipstack.com/check?access_key=cf0807d4e5aedccbd263028e10dcb2cb")
@@ -68,19 +67,18 @@ function mudarTab(id){
             document.querySelector("#atual a").classList.add("active");
             let   query= inputElement.value;            
             climaAtual(query);
-            //window.alert("sou o atual");
+           
         }else{
             document.querySelector("#atual a").classList.remove("active");
             document.querySelector("#previsao a").classList.add("active");
             let   query= inputElement.value;            
-            //climaAtual(query);
-            //window.alert("sou a previsao");
+            
         }
         
     }
 }
 
-//window.onload = preencherInicio();
+
 function preencherInicio(cidade1,path1,cidade2,path2,cidade3,path3,cidade4,path4){
     localizacao();
     console.log(cidade1+path1+cidade2+path2+cidade3+path3+cidade4+path4);
@@ -99,8 +97,7 @@ function preencherInicio(cidade1,path1,cidade2,path2,cidade3,path3,cidade4,path4
     })
     
     fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+cidade2)
-    .then(function(response){
-        console.log(response);
+    .then(function(response){        
         return response.json();
     })
     .then(function(response){       
@@ -113,8 +110,7 @@ function preencherInicio(cidade1,path1,cidade2,path2,cidade3,path3,cidade4,path4
     })
     
     fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+cidade3)
-    .then(function(response){
-        console.log(response);
+    .then(function(response){        
         return response.json();
     })
     .then(function(response){       
@@ -127,8 +123,7 @@ function preencherInicio(cidade1,path1,cidade2,path2,cidade3,path3,cidade4,path4
     })
     
     fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+cidade4)
-    .then(function(response){
-        console.log(response);
+    .then(function(response){        
         return response.json();
     })
     .then(function(response){       
@@ -201,38 +196,4 @@ function modalPHP(){
     });
     contador++;
     
-}
-function salvarFavoritos(){
-    let cidades1=[];
-
-    let index=document.querySelector("#select1").selectedIndex;
-    let options=document.querySelectorAll("#select1 option");
-    cidades1.push(options[index].value);
-    
-
-    index=document.querySelector("#select1").selectedIndex;
-    options=document.querySelectorAll("#select2 option");
-    cidades1.push(options[index].value);
-    
-    
-    index=document.querySelector("#select1").selectedIndex;
-    loptions=document.querySelectorAll("#select3 option");
-    cidades1.push(options[index].value);
-    
-    
-    index=document.querySelector("#select1").selectedIndex;
-    options=document.querySelectorAll("#select4 option");
-    cidades1.push(options[index].value);
-
-    console.log(cidades1);
-
-    $.ajax({
-        url:'presenter/ManterCidadeFavoritasPresenter.php',
-        method:'POST',
-        dataType:'json',
-        data:{cidades:cidades1}
-    })
-    .done(function(response){
-        console.log(response);
-    })
 }
