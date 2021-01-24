@@ -4,10 +4,10 @@ include('dao/QueryCidade.php');
 class MainContentPresenter
 {
     public function exbirpagina(){        
-    require_once 'header.php';
-    require_once 'main.php';
-    require_once 'section.php';
-    require_once 'footer.php';   
+    require_once 'view/header.php';
+    require_once 'view/main.php';
+    require_once 'view/section.php';
+    require_once 'view/footer.php';   
     }
     public function getCookie(){
         if(isset($_COOKIE['cidadesFavoritas'])){
