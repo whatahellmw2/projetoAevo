@@ -1,8 +1,8 @@
 let inputElement = document.querySelector("#nomeCidade");
 let formElement = document.querySelector("#formClima");
 let contentElement = document.querySelector("dadosClima");
-
-//let access_key="158844845ff2e24f95713211a5ab66b0";
+let contador=0;
+let access_key="158844845ff2e24f95713211a5ab66b0";
 //console.log(inputElement);
 //console.log(formElement);
 
@@ -80,57 +80,159 @@ function mudarTab(id){
     }
 }
 
-window.onload = function (){
-    //localizacao();     
-    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+"New York")
+//window.onload = preencherInicio();
+function preencherInicio(cidade1,path1,cidade2,path2,cidade3,path3,cidade4,path4){
+    localizacao();
+    console.log(cidade1+path1+cidade2+path2+cidade3+path3+cidade4+path4);
+    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+cidade1)
     .then(function(response){
         console.log(response);
         return response.json();
     })
     .then(function(response){       
-  
+       document.querySelector("#card1 h5").innerHTML=cidade1;
+       document.querySelector("#card1 img").src=path1;
        document.querySelector("#card1D").innerHTML=response.current.weather_descriptions[0];
        document.querySelector("#card1T").innerHTML=response.current.temperature+"ºC";
        document.querySelector("#card1 .climaImg").src=response.current.weather_icons;
        
     })
     
-    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+"Dubai")
+    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+cidade2)
     .then(function(response){
         console.log(response);
         return response.json();
     })
     .then(function(response){       
-  
+       document.querySelector("#card2 h5").innerHTML=cidade2;
+       document.querySelector("#card2 img").src=path2;
        document.querySelector("#card2D").innerHTML=response.current.weather_descriptions[0];
        document.querySelector("#card2T").innerHTML=response.current.temperature+"ºC";
        document.querySelector("#card2 .climaImg").src=response.current.weather_icons;
        
     })
     
-    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+"Berlim")
+    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+cidade3)
     .then(function(response){
         console.log(response);
         return response.json();
     })
     .then(function(response){       
-  
+        document.querySelector("#card3 h5").innerHTML=cidade3;
+       document.querySelector("#card3 img").src=path3;
        document.querySelector("#card3D").innerHTML=response.current.weather_descriptions[0];
        document.querySelector("#card3T").innerHTML=response.current.temperature+"ºC";
        document.querySelector("#card3 .climaImg").src=response.current.weather_icons;
        
     })
     
-    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+"Sao Paulo")
+    fetch("http://api.weatherstack.com/current?access_key="+access_key+"&query="+cidade4)
     .then(function(response){
         console.log(response);
         return response.json();
     })
     .then(function(response){       
-  
+       document.querySelector("#card4 h5").innerHTML=cidade4;
+       document.querySelector("#card4 img").src=path4;
        document.querySelector("#card4D").innerHTML=response.current.weather_descriptions[0];
        document.querySelector("#card4T").innerHTML=response.current.temperature+"ºC";
        document.querySelector("#card4 .climaImg").src=response.current.weather_icons;
        
+    })
+}
+
+
+
+
+function modalPHP(){
+    if(contador>0){
+        for(let i=0;i<=4;i++){
+            let elemento=document.querySelector("#select1");
+            elemento.removeChild(elemento.lastChild);
+            elemento=document.querySelector("#select2");
+            elemento.removeChild(elemento.lastChild);
+            elemento=document.querySelector("#select3");
+            elemento.removeChild(elemento.lastChild);
+            elemento=document.querySelector("#select4");
+            elemento.removeChild(elemento.lastChild);
+        }
+        
+    }
+
+    let cidade1=document.querySelector("#card1 h5").textContent;
+    let cidade2=document.querySelector("#card2 h5").textContent;
+    let cidade3=document.querySelector("#card3 h5").textContent;
+    let cidade4=document.querySelector("#card4 h5").textContent;
+    document.querySelector("#select1 option[selected]").innerHTML=cidade1;
+    document.querySelector("#select2 option[selected]").innerHTML=cidade2;
+    document.querySelector("#select3 option[selected]").innerHTML=cidade3;
+    document.querySelector("#select4 option[selected]").innerHTML=cidade4;    
+    
+    $.ajax({
+        url:'presenter/ManterCidadeFavoritasPresenter.php',
+        method:'GET'
+    })
+    .done(function(response){        
+        response.forEach(function(cidade){
+            let node1 = document.createElement("OPTION");
+            node1.innerHTML=cidade.NAME;
+            node1.value=cidade.NAME;
+            
+            let node2 = document.createElement("OPTION");
+            node2.innerHTML=cidade.NAME;
+            node2.value=cidade.NAME;
+            
+            let node3 = document.createElement("OPTION");
+            node3.innerHTML=cidade.NAME;
+            node3.value=cidade.NAME;
+            
+            let node4 = document.createElement("OPTION");
+            node4.innerHTML=cidade.NAME;
+            node4.value=cidade.NAME;
+            if(cidade.NAME!=cidade1 && cidade.NAME!=cidade2 && cidade.NAME!=cidade3 && cidade.NAME!=cidade4){
+                //console.log(cidade.NAME+cidade1+cidade2+cidade3+cidade4);
+                document.querySelector("#select1").append(node1);
+                document.querySelector("#select2").append(node2);
+                document.querySelector("#select3").append(node3);
+                document.querySelector("#select4").append(node4);
+            }
+            
+        })
+    });
+    contador++;
+    
+}
+function salvarFavoritos(){
+    let cidades1=[];
+
+    let index=document.querySelector("#select1").selectedIndex;
+    let options=document.querySelectorAll("#select1 option");
+    cidades1.push(options[index].value);
+    
+
+    index=document.querySelector("#select1").selectedIndex;
+    options=document.querySelectorAll("#select2 option");
+    cidades1.push(options[index].value);
+    
+    
+    index=document.querySelector("#select1").selectedIndex;
+    loptions=document.querySelectorAll("#select3 option");
+    cidades1.push(options[index].value);
+    
+    
+    index=document.querySelector("#select1").selectedIndex;
+    options=document.querySelectorAll("#select4 option");
+    cidades1.push(options[index].value);
+
+    console.log(cidades1);
+
+    $.ajax({
+        url:'presenter/ManterCidadeFavoritasPresenter.php',
+        method:'POST',
+        dataType:'json',
+        data:{cidades:cidades1}
+    })
+    .done(function(response){
+        console.log(response);
     })
 }
